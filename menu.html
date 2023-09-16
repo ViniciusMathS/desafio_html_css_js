@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        header{
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+            -webkit-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+            -moz-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caixa {
+            width: 100px;
+            background-color: rgb(32, 32, 32);
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .caixa:hover {
+            background-color: gray;
+        }
+
+        .caixa a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .conteudo {
+            margin: 20px;
+            padding: 20px;
+            background-color: darkgray;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        footer {
+          background-color: rgb(32, 32, 32); 
+         color: white; 
+         padding: 15px; 
+         text-align: center; 
+         font-size: 15px;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+         position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Desafio de: HTML, CSS e javascript</h1>
+        <div class="menu">
+            <div class="caixa">
+                <a href="idade.html">Exercicio 2</a>
+            </div>
+
+            <div class="caixa">
+                <a href="notas.html">execicio 3</a>
+            </div>
+
+            <div class="caixa">
+                <a href="imc.html">Exercicio 4</a>
+            </div>
+
+            <div class="caixa">
+                <a href="salarios.html">Exercicio 5</a>
+            </div>
+        </div>
+    </header>
+    <div class="conteudo">
+        <p>
+            1. Criar um site que contenha um header com logomarca e título do site. Uma barra de navegação e uma footer. Cada uma das atividades abaixo deve ser implementadas em uma página html e acessada através de um link.
+        </p>
+        <p>
+            2. Faça uma página que leia a idade de uma pessoa e informe se ela é maior ou menor de idade. Para ser maior a pessoa precisa ter no mínimo 18 anos
+        </p>
+        <p>
+            3. Faça uma página que leia três notas de um aluno e calcule sua média. O usuário deve poder inserir a frequência do aluno. Calcule a situação do aluno baseado na média e na frequência
+        </p>
+        <p>
+            4. Faça um página para calcular o IMC. Basear na tabela da pagina https://www.calculoimc.com.br.
+        </p>
+        <p>
+            5. Uma empresa resolveu conceder aumento para seus funcionários. Para tal, ela se baseou no cargo do funcionário para conceder o aumento. O Gerente recebe um aumento de 5%, Supervisores 8%, operadores 9% e demais colaboradores recebem 10%. A página deve permitir informar o cargo e o salário de cada funcionário e mostrar o salário atual, qual foi o aumento e qual o valor do novo salário.
+        </p>
+    </div>
+    <footer>
+        &copy;Desenvolvido por Vinicius Matheus
+    </footer>
+</body>
+</html>

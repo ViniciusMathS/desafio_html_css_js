@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        header {
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-webkit-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-moz-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+
+        }
+        .verificar{
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        button {
+            width: 100%;
+            background-color: #1779ca;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input{
+            width: 98%;
+        }
+        footer {
+         background-color: rgb(32, 32, 32); 
+         color: white; 
+         padding: 15px; 
+         text-align: center; 
+         font-size: 15px;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+         position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificação de maior de idade</h1>
+    </header>
+    <div class="verificar">
+        <p>Informe sua idade:</p>
+    <input type="number" id="idade" placeholder="apenas anos completos, exemplo: 27">
+    <button onclick="verificar()">Verificar</button>
+    <div>
+
+    <footer>
+        &copy;Desenvolvido por Vinicius Matheus
+    </footer>
+    
+    <script>
+        function verificar(){
+         let ipIdade = document.getElementById("idade") 
+          if(ipIdade.value == '' || ipIdade.value < 0){
+            alert("Informe um valor valido para idade")
+            ipIdade.focus()
+            return
+          } else if(ipIdade.value>=18) {
+            alert("Voce é maior de idade.")
+          }else{
+            alert("Voce é menor de idade.")
+          }
+        }
+    </script>
+</body>
+</html>

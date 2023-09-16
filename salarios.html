@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora de salario</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        header {
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-webkit-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-moz-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        input {
+            width: 95%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            background-color: #1779ca;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        p {
+            margin-bottom: -3px;
+            margin-top: 50px;
+        }
+        select {
+            width: 220px;
+            padding: 2px;
+            margin-left: 10px;
+            text-align: center;
+        }
+        #novosal {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+        #raise {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+        footer {
+         background-color: rgb(32, 32, 32); 
+         color: white; 
+         padding: 15px; 
+         text-align: center; 
+         font-size: 15px;
+         position: fixed;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Calculadora de salario</h1>
+  </header>
+    <div class="container">
+        <label for="">Selecione o seu cargo: </label>
+        <select id="cargo">
+            <option>--</option>
+            <option value="1">Gerente</option>
+            <option value="2">Supervisor</option>
+            <option value="3">Operador</option>
+            <option value="4">Outro</option>
+        </select>
+        <p>Informe seu salario atual:</p>
+        <input type="number" id="salario" placeholder="exemplo: 2372.47">
+        <button onclick="gravar()">calcular</button>
+    </div>
+    
+    <div id="raise"></div>
+    <div id="novosal"></div>
+<footer>
+  &copy;Desenvolvido por Vinicius Matheus
+</footer>
+    <script>
+        function gravar(){
+          let op = parseFloat(document.getElementById("cargo").value) 
+          let sal = parseFloat(document.getElementById("salario").value)
+          if(sal<=0){
+            alert("Iforme um valor valido para o salario!")
+            return
+          }if (op==1){
+            let sal_novo=sal*1.05
+            let aumento=sal*0.05
+            let novosal = `Seu novo salario será de: ${sal_novo.toFixed(2)} reais`
+            document.getElementById("novosal").textContent=novosal
+            document.getElementById("raise").textContent=`Com o aumento de: ${aumento.toFixed(2)} reais`
+           
+          }else if(op==2){
+            let sal_novo = sal * 1.08
+            let aumento=sal*0.08
+            let novosal = `Seu novo salario é: ${sal_novo.toFixed(2)} reais`
+            document.getElementById("novosal").textContent=novosal
+            document.getElementById("raise").textContent=`Com o aumento de: ${aumento.toFixed(2)} reais`
+            
+            
+          }else if(op==3){
+            let sal_novo=sal*1.09
+            let aumento=sal*0.09
+            let novosal = `Seu novo salario é: ${sal_novo.toFixed(2)} reais`
+            document.getElementById("novosal").textContent=novosal
+            document.getElementById("raise").textContent=`Com o aumento de: ${aumento.toFixed(2)} reais`
+            
+          }else if(op==4){
+            let sal_novo=sal*1.1
+            let aumento=sal*0.1
+            let novosal = `Seu novo salario é: ${sal_novo.toFixed(2)} reais`
+            document.getElementById("novosal").textContent=novosal
+            document.getElementById("raise").textContent=`Com o aumento de: ${aumento.toFixed(2)} reais`
+            
+          }else{
+            alert("Selecione um cargo!")
+            return
+          }
+          
+          
+        }
+    </script>
+</body>
+</html>

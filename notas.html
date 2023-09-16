@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora media</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        header {
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-webkit-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-moz-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        input {
+            width: 95%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            background-color: #1779ca;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: large;
+        }
+        #situacao {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+            margin-bottom: 20px;
+        } 
+        p {
+          font-weight: bold;
+          margin-bottom: -3px;
+        }
+        footer {
+          background-color: rgb(32, 32, 32); 
+         color: white; 
+         padding: 15px; 
+         text-align: center; 
+         font-size: 15px;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Calculadora de médias</h1>
+</header>
+  <div class="container">
+    <p>Informe a frequencia (%):</p>
+    <input type="number" id="Frequencia" placeholder="exemplo: 82.3">
+    <p>Informe a primeira nota:</p>
+    <input type="number" id="nota1" placeholder="exemplo: 7.8">
+    <p>Informe a segunda nota:</p>
+    <input type="number" id="nota2" placeholder="exemplo: 7.8">
+    <p>Informe a terceira nota:</p>
+    <input type="number" id="nota3" placeholder="exemplo: 7.8">
+    <button onclick="gravar()">Calcular</button>
+  </div>
+  <div id="situacao"></div>
+<footer>
+  &copy;Desenvolvido por Vinicius Matheus
+</footer>
+    <script>
+        function gravar(){
+          let freq = parseFloat(document.getElementById("Frequencia").value)
+          if (freq>100||freq<0||isNaN(freq)){
+            alert("Informe um valor entre 0 e 100 para a frequencia")
+            return
+          }
+          let nota1 = parseFloat(document.getElementById("nota1").value)
+          if(nota1>10||nota1<0||isNaN(nota1)){
+            alert("Informe um valor entre 0 e 10 para a primeira nota")
+            return
+          }
+          let nota2 = parseFloat(document.getElementById("nota2").value)
+          if(nota2>10||nota2<0||isNaN(nota2)){
+            alert("Informe um valor entre 0 e 10 para a segunda nota")
+            return
+          }
+          let nota3 = parseFloat(document.getElementById("nota3").value)
+          if(nota3>10||nota3<0||isNaN(nota3)){
+            alert("Informe um valor entre 0 e 10 para a terceira nota")
+            return
+          }
+          let media = (nota1+nota2+nota3)/3
+          
+          if (media.toFixed(0) >= 7 && freq.toFixed(0) >= 75) {
+                sit = "Aprovado";
+            } 
+            else {
+                sit = "Reprovado";
+            }
+            
+            document.getElementById("situacao").textContent=`Situação: ${sit}`
+           
+        }
+    
+    </script>
+</body>
+</html>

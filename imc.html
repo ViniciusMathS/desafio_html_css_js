@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+        header {
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-webkit-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+-moz-box-shadow: 1px 8px 10px 0px rgba(46,44,44,0.87);
+
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        input {
+            width: 95%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            background-color: #1779ca;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #IMC {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #636161;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+        footer {
+            background-color: rgb(32, 32, 32); 
+         color: white; 
+         padding: 15px; 
+         text-align: center; 
+         font-size: 15px;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de IMC</h1>
+    </header>
+    <div class="container">
+        <p>Informe seu peso (Kg)</p>
+        <input type="number" id="peso" placeholder="exemplo: 65.7">
+        <p>Informe sua altura (m)</p>
+        <input type="number" id="altura" placeholder="exemplo: 1.68">
+        <button onclick="gravar()">Calcular</button>
+    </div>
+    <div id="IMC"></div>
+    <table>
+        <tr>
+            <th> Resultado </th>
+            <th> Situação </th>
+            
+          </tr>
+          <tr>
+            <td> Abaixo de 17 </td>
+            <td> Muito abaixo do peso </td>
+            
+          </tr>
+          <tr>
+            <td> Entre 17 e 18,49 </td>
+            <td> Abaixo do peso </td>
+            
+          </tr>
+          <tr>
+              <td> Entre 18,5 e 24,99 </td>
+              <td> Peso normal </td>
+          <tr>
+              <td> Entre 25 e 29,99 </td>
+              <td> Acima do peso </td>
+          </tr>   
+          </tr>
+           <td> Entre 30 e 34,99 </td>
+           <td> Obesidade I </td>
+           <tr>
+              <td> Entre 35 e 39,99</td>
+              <td> Obesidade II (severa)</td>
+           </tr>
+           <tr>
+              <td> Acima de 40 </td>
+              <td> Obesidade III (mórbida)</td>
+           </tr>
+    </table>
+    <footer>
+        &copy;Desenvolvido por Vinicius Matheus
+    </footer>
+    <script>
+        function gravar(){
+          let peso = parseFloat(document.getElementById("peso").value) 
+          let altura = parseFloat(document.getElementById("altura").value)
+          if(altura!='' && peso!='' && peso>0 && altura>0){
+            let imc = peso/(altura*altura)
+            let seuIMC = `Seu IMC é: ${imc.toFixed(2)}`
+            document.getElementById("IMC").textContent=seuIMC
+          }else{
+            alert("Informe valores válidos")
+            return
+          }
+          
+        }
+    </script>
+</body>
+</html>
