@@ -107,7 +107,7 @@
         function gravar(){
           let op = parseFloat(document.getElementById("cargo").value) 
           let sal = parseFloat(document.getElementById("salario").value)
-          if(sal<=0){
+          if(sal<=0||isNaN(sal)){
             alert("Iforme um valor valido para o salario!")
             return
           }if (op==1){
