@@ -6,26 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordenador de Números</title>
     <style>
+        body {
+            font-family: Arial;
+            background-color: lightgray;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1779ca;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 1px 8px 10px 0px rgba(46, 44, 44, 0.87);
+            -webkit-box-shadow: 1px 8px 10px 0px rgba(46, 44, 44, 0.87);
+            -moz-box-shadow: 1px 8px 10px 0px rgba(46, 44, 44, 0.87);
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        input[type="number"] {
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #1779ca;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: blue;
+        }
+
+        select {
+            padding: 10px;
+            margin: 10px;
+        }
+
         #resultado {
-            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid gray;
+        }
+
+        #posicao {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid gray;
+        }
+
+        footer {
+            background-color: rgb(32, 32, 32);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 
 <body>
-    <h1>Ordenador de Números</h1>
-    <input type="number" id="numero">
-    <button onclick="adicionar()">Adicionar Número</button>
-    <button onclick="ordenar()">Ordenar</button>
-    <button onclick="pegarPosicao()">Verificar posição</button>
-    <select id="ordem">
-        <option value="1">Inserção</option>
-        <option value="2">Crescente</option>
-        <option value="3">Decrescente</option>
-    </select>
+    <header>
+        <h1>Ordenador de Números</h1>
+    </header>
+    <div class="container">
+        <input type="number" id="numero">
+        <button onclick="adicionar()">Adicionar número</button>
+        <button onclick="pegarPosicao()">Verificar posição</button>
+        <button onclick="excluir()">Excluir número</button>
+        <button onclick="modificar()">Modificar número</button>
+        <select id="ordem" onchange="ordenar()">
+            <option value="1">Inserção</option>
+            <option value="2">Crescente</option>
+            <option value="3">Decrescente</option>
+        </select>
+    </div>
     <div id="resultado"></div>
     <div id="posicao"></div>
-
+    <footer>
+        &copy;Desenvolvido por Vinicius Matheus
+    </footer>
     <script>
 
         let numeros = []
@@ -90,7 +163,6 @@
                 return
             }
             let pos = []
-            let vezes = 0
             if (numeros.length === 0) {
                 alert("Nenhum número foi inserido.")
             } else if (op == 1) {
@@ -100,26 +172,34 @@
                     }
                 } if (pos.length < 1) {
                     document.getElementById("posicao").textContent = `O numero ${numero} não foi encontrado!`
-                } else{
+                } else {
                     document.getElementById("posicao").textContent = `O numero ${numero} ocorre nas seguintes posições: ` + pos.join("; ")
                 }
-                
+
             } else if (op == 2) {
                 crescente(numeros)
                 for (let i = 0; i < numeros.length; i++) {
                     if (numero == numeros[i]) {
                         pos.push(i)
                     }
+                } if (pos.length < 1) {
+                    document.getElementById("posicao").textContent = `O numero ${numero} não foi encontrado!`
+                } else {
+                    document.getElementById("posicao").textContent = `O numero ${numero} ocorre nas seguintes posições: ` + pos.join("; ")
                 }
-                document.getElementById("posicao").textContent = `O numero ${numero} ocorre nas seguintes posições: ` + pos.join("; ")
+
             } else if (op == 3) {
                 decrescente(numeros)
                 for (let i = 0; i < numeros.length; i++) {
                     if (numero == numeros[i]) {
                         pos.push(i)
                     }
+                } if (pos.length < 1) {
+                    document.getElementById("posicao").textContent = `O numero ${numero} não foi encontrado!`
+                } else {
+                    document.getElementById("posicao").textContent = `O numero ${numero} ocorre nas seguintes posições: ` + pos.join("; ")
                 }
-                document.getElementById("posicao").textContent = `O numero ${numero} ocorre nas seguintes posições: ` + pos.join("; ")
+
             }
         }
 
@@ -127,6 +207,7 @@
             let op = parseInt(document.getElementById("ordem").value)
             if (numeros.length === 0) {
                 alert("Nenhum número foi inserido.")
+                return
             } else if (op == 1) {
                 document.getElementById("resultado").textContent = "Números em ordem de inserção: " + numerosOrg.join("; ")
             } else if (op == 2) {
@@ -137,6 +218,29 @@
                 document.getElementById("resultado").textContent = "Números em ordem decrescente: " + numeros.join("; ")
             }
         }
+
+        function excluir() {
+            let numeroRmv = parseInt(prompt("Informe o número que deseja remover: "))
+            numerosOrg = numerosOrg.filter(numero => numero !== numeroRmv)
+            numeros = numerosOrg.filter(numero => numero !== numeroRmv)
+            ordenar()
+        }
+
+        function modificar() {
+            let numeroAnt = parseInt(prompt("Informe o numero que deseja substituir: "))
+            let numeroNovo = parseInt(prompt("Informe o novo número: "))
+            for (let i = 0; i < numeros.length; i++) {
+                if (numeroAnt == numeros[i]) {
+                    numeros[i] = numeroNovo
+                }
+                if (numeroAnt == numerosOrg[i]) {
+                    numerosOrg[i] = numeroNovo
+                }
+            }
+            ordenar()
+        }
+
+
     </script>
 </body>
 
