@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <style>
+        .calculadora {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: gray;
+        }
+
+        input {
+            width: 320px;
+            margin: 10px 0;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: large;
+            background-color: aliceblue;
+        }
+
+        button {
+            width: 87px;
+            background-color: #1779ca;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: blue;
+        }
+
+        #igual {
+            width: 360px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculadora">
+        <input type="text" id="tela" readonly>
+        <button onclick="mostrar('7')">7</button>
+        <button onclick="mostrar('8')">8</button>
+        <button onclick="mostrar('9')">9</button>
+        <button onclick="mostrar(' + ')">+</button>
+        <button onclick="mostrar('4')">4</button>
+        <button onclick="mostrar('5')">5</button>
+        <button onclick="mostrar('6')">6</button>
+        <button onclick="mostrar(' - ')">-</button>
+        <button onclick="mostrar('1')">1</button>
+        <button onclick="mostrar('2')">2</button>
+        <button onclick="mostrar('3')">3</button>
+        <button onclick="mostrar(' * ')">x</button>
+        <button onclick="limpar()">C</button>
+        <button onclick="mostrar('0')">0</button>
+        <button onclick="mostrar('.')">.</button>
+        <button onclick="mostrar(' / ')">/</button>
+        <button id="igual" onclick="resultado()"> = </button>
+    </div>
+
+ 
+
+    <script>
+        let numeroDisp=document.getElementById("tela")
+        function mostrar(botao) {
+            numeroDisp.value += botao;
+        }
+        function limpar() {
+            numeroDisp.value = ""
+
+        }
+        function calcular(x) {
+            let numeros = x.split(' ')
+            let num1 = parseFloat(numeros[0])
+            console.log(numeros[0])
+            for (let i = 2; i<=numeros.length; i+=2) {
+                let op = numeros[i-1]
+                let num2 = parseFloat(numeros[i])
+                if (op=="+") {
+                    num1 = num1 + num2
+                }
+                else if (op=="-") {
+                    num1 = num1 - num2
+                }
+                else if (op=="*") {
+                    num1 = num1 * num2
+                }
+                else if (op=="/") {
+                    if (num2==0) {
+                        return "Erro: Impossivel dividir por zero"
+                    }
+                    num1 = num1 / num2
+                }
+
+            }
+            return num1
+        }
+        
+        function resultado() {
+            let calculo = numeroDisp.value
+            console.log(calculo)
+            let resultado=calcular(calculo)
+            limpar()
+            mostrar(resultado)
+        }
+    </script>
+</body>
+
+</html>
